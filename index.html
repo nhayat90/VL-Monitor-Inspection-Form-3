@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Laryngoscope Monitor Inspection 3 Form</title>
+    <style>
+        /* General body styles */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f0f4f8;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .container {
+            background-color: #fff;
+            border-radius: 12px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+            max-width: 800px;
+            width: 100%;
+            padding: 40px;
+            margin: 20px;
+            border: 1px solid #e0e0e0;
+        }
+        h2 {
+            text-align: center;
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 30px;
+            font-size: 26px;
+            letter-spacing: 1px;
+        }
+        p {
+            text-align: center;
+            font-weight: 500;
+            color: #555;
+            margin-bottom: 30px;
+        }
+        .form-group {
+            margin-bottom: 25px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #333;
+        }
+        .form-group input[type="text"],
+        .form-group input[type="date"] {
+            width: 100%;
+            padding: 12px;
+            font-size: 16px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background-color: #f9f9f9;
+            transition: background-color 0.3s ease, border-color 0.3s ease;
+        }
+        .form-group input[type="text"]:focus,
+        .form-group input[type="date"]:focus {
+            outline: none;
+            background-color: #fff;
+            border-color: #007bff;
+            box-shadow: 0 0 8px rgba(0, 123, 255, 0.2);
+        }
+        .section-title {
+            font-size: 20px;
+            font-weight: 700;
+            color: #007bff;
+            margin-bottom: 15px;
+            padding-bottom: 5px;
+            border-bottom: 2px solid #e0e0e0;
+        }
+        .inspection-item {
+            margin-bottom: 20px;
+        }
+        .inspection-item label {
+            font-size: 16px;
+            font-weight: 500;
+            margin-bottom: 8px;
+            display: block;
+        }
+        .options {
+            margin-top: 5px;
+        }
+        .options label {
+            font-weight: 400;
+            margin-right: 25px;
+            cursor: pointer;
+        }
+        .submit-btn {
+            display: block;
+            width: 100%;
+            padding: 14px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .submit-btn:hover {
+            background-color: #0056b3;
+        }
+        .submit-btn:active {
+            background-color: #003f7f;
+        }
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+        }
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.29/jspdf.plugin.autotable.min.js"></script>
+</head>
+<body>
+
+<div class="container">
+    <h2>Video Laryngoscope Monitor Inspection 3 Form</h2>
+
+    <p>This form should be filled out according to the instructions shared in Section 5.2.12 of WI-1062 document.</p>
+
+    <form id="inspectionForm">
+        <!-- Extra Fields at the Top -->
+        <div class="form-group">
+            <label for="inspectionDate">Inspection Date:</label>
+            <input type="date" id="inspectionDate" name="inspectionDate" required>
+        </div>
+
+        <div class="form-group">
+            <label for="inspectorName">Inspector Name:</label>
+            <input type="text" id="inspectorName" name="inspectorName" placeholder="Enter Inspector Name" required>
+        </div>
+
+        <div class="form-group">
+            <label for="deviceSerial">Device Serial #:</label>
+            <input type="text" id="deviceSerial" name="deviceSerial" placeholder="Enter Device Serial #" required>
+        </div>
+
+        <div class="form-group">
+            <label for="productionPO">Production PO #:</label>
+            <input type="text" id="productionPO" name="productionPO" placeholder="Enter Production PO #" required>
+        </div>
+
+        <!-- Visual Inspection Section -->
+        <div class="section-title">Visual Inspection</div>
+
+        <div class="inspection-item">
+            <label>Inspect the enclosure for any damage, scratches or white marks.</label>
+            <div class="options">
+                <label><input type="radio" name="enclosure_damage" value="Pass" required> Pass</label>
+                <label><input type="radio" name="enclosure_damage" value="Fail"> Fail</label>
+            </div>
+        </div>
+
+        <div class="inspection-item">
+            <label>Ensure that the metal hinge part is in the correct position.</label>
+            <div class="options">
+                <label><input type="radio" name="metal_hinge" value="Pass" required> Pass</label>
+                <label><input type="radio" name="metal_hinge" value="Fail"> Fail</label>
+            </div>
+        </div>
+
+        <div class="inspection-item">
+            <label>Ensure there are no signs or any damage.</label>
+            <div class="options">
+                <label><input type="radio" name="metal_hinge2" value="Pass" required> Pass</label>
+                <label><input type="radio" name="metal_hinge2" value="Fail"> Fail</label>
+            </div>
+        </div>
+
+        <div class="inspection-item">
+            <label>Ensure the USB is in the correct position.</label>
+            <div class="options">
+                <label><input type="radio" name="metal_hinge3" value="Pass" required> Pass</label>
+                <label><input type="radio" name="metal_hinge3" value="Fail"> Fail</label>
+            </div>
+        </div>
+
+        <div class="inspection-item">
+            <label>Ensure the plastic enclosure and hinge are fully seated.</label>
+            <div class="options">
+                <label><input type="radio" name="metal_hinge4" value="Pass" required> Pass</label>
+                <label><input type="radio" name="metal_hinge4" value="Fail"> Fail</label>
+            </div>
+        </div>
+
+        <div class="inspection-item">
+             <label>Ensure the LCD is in the correct direction.</label>
+             <div class="options">
+                <label><input type="radio" name="metal_hinge5" value="Pass" required> Pass</label>
+                <label><input type="radio" name="metal_hinge5" value="Fail"> Fail</label>
+             </div>
+        </div>
+
+        <div class="inspection-item">
+            <label>Ensure USB-C and mini-HDMI ports are aligned with the cavities in the plastic.</label>
+            <div class="options">
+                <label><input type="radio" name="metal_hinge6" value="Pass" required> Pass</label>
+                <label><input type="radio" name="metal_hinge6" value="Fail"> Fail</label>
+            </div>
+        </div>
+
+        <div class="inspection-item">
+             <label>Ensure that the two plastic enclosure are sealed properly and there are no gaps.</label>
+             <div class="options">
+                <label><input type="radio" name="metal_hinge7" value="Pass" required> Pass</label>
+                <label><input type="radio" name="metal_hinge7" value="Fail"> Fail</label>
+             </div>
+        </div>
+
+         <!-- Functional Inspection Section -->
+        <div class="section-title">Functional Inspection</div>
+
+        <div class="inspection-item">
+            <label>Rotate the hinge 3 to 4 times and ensure the movement is smooth.</label>
+            <div class="options">
+                <label><input type="radio" name="enclosure_damage2" value="Pass" required> Pass</label>
+                <label><input type="radio" name="enclosure_damage2" value="Fail"> Fail</label>
+            </div>
+        </div>
+
+        <div class="inspection-item">
+            <label>Ensure the hinge rotate 110 degrees.</label>
+            <div class="options">
+                <label><input type="radio" name="enclosure_damage3" value="Pass" required> Pass</label>
+                <label><input type="radio" name="enclosure_damage3" value="Fail"> Fail</label>
+            </div>
+        </div>
+
+        <div class="inspection-item">
+            <label>Remove the side soft cover and insert it back. Ensure that the cover it smooth.</label>
+            <div class="options">
+                <label><input type="radio" name="enclosure_damage4" value="Pass" required> Pass</label>
+                <label><input type="radio" name="enclosure_damage4" value="Fail"> Fail</label>
+            </div>
+        </div>
+
+        <div class="inspection-item">
+            <label>Press both the side buttons and ensure the feel of buttons being pressed is achieved.</label>
+            <div class="options">
+                <label><input type="radio" name="enclosure_damage5" value="Pass" required> Pass</label>
+                <label><input type="radio" name="enclosure_damage5" value="Fail"> Fail</label>
+            </div>
+        </div>
+
+        <div class="inspection-item">
+            <label>Connect the charger and ensure it connects smoothly.</label>
+            <div class="options">
+                <label><input type="radio" name="enclosure_damage6" value="Pass" required> Pass</label>
+                <label><input type="radio" name="enclosure_damage6" value="Fail"> Fail</label>
+            </div>
+        </div>
+
+        <div class="inspection-item">
+            <label>Ensure that the USB is in the correct direction. Connect the USB to a blade to ensure the connection is smooth.</label>
+            <div class="options">
+                <label><input type="radio" name="enclosure_damage7" value="Pass" required> Pass</label>
+                <label><input type="radio" name="enclosure_damage7" value="Fail"> Fail</label>
+            </div>
+        </div>
+
+        <div class="inspection-item">
+            <label>While blade is connected, turn on the device and wait for the camera screen to come. Turn off the device and repeated this 3 times.</label>
+            <div class="options">
+                <label><input type="radio" name="enclosure_damage8" value="Pass" required> Pass</label>
+                <label><input type="radio" name="enclosure_damage8" value="Fail"> Fail</label>
+            </div>
+        </div>
+
+        <div class="inspection-item">
+            <label>While blade connected, turn on the device and note the battery time. Leave the device for 5 minutes. After 5 minutes check the battery drain time. Ensure that the drain time is 5min ± 10%.</label>
+            <div class="options">
+                <label><input type="radio" name="enclosure_damage9" value="Pass" required> Pass</label>
+                <label><input type="radio" name="enclosure_damage9" value="Fail"> Fail</label>
+            </div>
+        </div>
+
+        <div class="inspection-item">
+            <label>Go to settings page and browse through all settings options and observe screen for functionality.</label>
+            <div class="options">
+                <label><input type="radio" name="enclosure_damage10" value="Pass" required> Pass</label>
+                <label><input type="radio" name="enclosure_damage10" value="Fail"> Fail</label>
+            </div>
+        </div>
+
+        <div class="inspection-item">
+            <label>Using a test blade, inspect the monitor for color correction, damaged pixels, flickering and missing pixels.</label>
+            <div class="options">
+                <label><input type="radio" name="enclosure_damage11" value="Pass" required> Pass</label>
+                <label><input type="radio" name="enclosure_damage11" value="Fail"> Fail</label>
+            </div>
+        </div>
+
+        <div class="inspection-item">
+            <label>When charging, ensure the red LED light turns ON.</label>
+            <div class="options">
+                <label><input type="radio" name="enclosure_damage12" value="Pass" required> Pass</label>
+                <label><input type="radio" name="enclosure_damage12" value="Fail"> Fail</label>
+            </div>
+        </div>
+
+        <div class="inspection-item">
+            <label>In Power ON mode ensure the Green LED light turns ON.</label>
+            <div class="options">
+                <label><input type="radio" name="enclosure_damage13" value="Pass" required> Pass</label>
+                <label><input type="radio" name="enclosure_damage13" value="Fail"> Fail</label>
+            </div>
+        </div>
+
+        <!-- Dimensional Inspection Section -->
+        <div class="section-title">Dimensional Inspection</div>
+
+        <div class="inspection-item">
+            <label>Measure the USB depth to ensure it is 9mm ± 0.2mm.</label>
+            <div class="options">
+                <label><input type="radio" name="enclosure_damage14" value="Pass" required> Pass</label>
+                <label><input type="radio" name="enclosure_damage14" value="Fail"> Fail</label>
+            </div>
+        </div>
+
+        <div class="inspection-item">
+            <label>Measure the USB connector Diameter to ensure it is 16.00 ± 0.05mm.</label>
+            <div class="options">
+                <label><input type="radio" name="enclosure_damage15" value="Pass" required> Pass</label>
+                <label><input type="radio" name="enclosure_damage15" value="Fail"> Fail</label>
+            </div>
+        </div>
+
+<!-- IEC Testing Inspection Section -->
+<div class="section-title">IEC Testing</div>
+
+<div class="inspection-item">
+    <label>Perform Patient leakage current testing as per instructions in WI-1064.</label>
+    <div class="options">
+        <label><input type="radio" name="enclosure_damage16" value="Pass" required> Pass</label>
+        <label><input type="radio" name="enclosure_damage16" value="Fail"> Fail</label>
+    </div>
+</div>
+
+<div class="inspection-item">
+    <label>Perform Hi-pot(Safety analyzer) testing as per instruction in WI-1064.</label>
+    <div class="options">
+        <label><input type="radio" name="enclosure_damage17" value="Pass" required> Pass</label>
+        <label><input type="radio" name="enclosure_damage17" value="Fail"> Fail</label>
+    </div>
+</div>
+<button type="submit" class="submit-btn">Submit Inspection and Generate PDF</button>
+</form>
+</div>
+
+<script>
+document.getElementById('inspectionForm').addEventListener('submit', function(event) {
+    event.preventDefault();
+
+    const { jsPDF } = window.jspdf;
+    const doc = new jsPDF();
+
+    // Add company logo (replace with your actual logo path)
+    // doc.addImage('path/to/your/logo.png', 'PNG', 10, 10, 50, 20);
+
+    // Set font styles for company title
+    doc.setFont("helvetica", "bold");
+    doc.setFontSize(20);
+    doc.setTextColor(0, 102, 204); // Blue color for header
+
+    // Add company title
+    doc.text("Goldstar Medical Instruments", 105, 20, null, null, "center");
+
+    // Set font styles for form title
+    doc.setFontSize(16);
+
+    // Add form title
+    doc.text("Video Laryngoscope Monitor Inspection 3 Form", 105, 30, null, null, "center");
+
+    // Reset font for content
+    doc.setFont("helvetica", "normal");
+    doc.setFontSize(10);
+    doc.setTextColor(0, 0, 0);
+
+    // Capture form data
+    const inspectionDate = document.getElementById('inspectionDate').value;
+    const inspectorName = document.getElementById('inspectorName').value;
+    const deviceSerial = document.getElementById('deviceSerial').value;
+    const productionPO = document.getElementById('productionPO').value;
+
+    // Add inspection details
+    doc.setFontSize(14);
+    doc.text("Inspection Details", 14, 45);
+    doc.setFontSize(10);
+    doc.text(`Inspection Date: ${inspectionDate}`, 14, 55);
+    doc.text(`Inspector Name: ${inspectorName}`, 14, 62);
+    doc.text(`Device Serial #: ${deviceSerial}`, 14, 69);
+    doc.text(`Production PO #: ${productionPO}`, 14, 76);
+
+    // Function to get all radio button values
+    function getRadioValues(name) {
+        return document.querySelector(`input[name="${name}"]:checked`)?.value || 'N/A';
+    }
+
+    // Prepare data for tables
+    const visualInspectionData = [
+        ["Enclosure Damage", getRadioValues("enclosure_damage")],
+        ["Metal Hinge Position", getRadioValues("metal_hinge")],
+        ["No Signs of Damage", getRadioValues("metal_hinge2")],
+        ["USB Position", getRadioValues("metal_hinge3")],
+        ["Plastic Enclosure Fully Seated", getRadioValues("metal_hinge4")],
+        ["LCD Direction Correct", getRadioValues("metal_hinge5")],
+        ["USB-C and mini-HDMI Alignment", getRadioValues("metal_hinge6")],
+        ["Plastic Enclosure Properly Sealed", getRadioValues("metal_hinge7")]
+    ];
+
+    const functionalInspectionData = [
+        ["Hinge Movement Smooth", getRadioValues("enclosure_damage2")],
+        ["Hinge Rotates 110 Degrees", getRadioValues("enclosure_damage3")],
+        ["Side Cover Smooth Operation", getRadioValues("enclosure_damage4")],
+        ["Side Buttons Function Properly", getRadioValues("enclosure_damage5")],
+        ["Charger Connects Smoothly", getRadioValues("enclosure_damage6")],
+        ["USB Correct Direction, Smooth Connection", getRadioValues("enclosure_damage7")],
+        ["Blade Connected, Camera Screen Shows", getRadioValues("enclosure_damage8")],
+        ["Battery Drain Check (5 min ±10%)", getRadioValues("enclosure_damage9")],
+        ["Settings Page Functionality", getRadioValues("enclosure_damage10")],
+        ["Monitor Inspection (Color, Pixels, etc.)", getRadioValues("enclosure_damage11")],
+        ["Red LED (Charging) Turns On", getRadioValues("enclosure_damage12")],
+        ["Green LED (Power On) Turns On", getRadioValues("enclosure_damage13")]
+    ];
+
+    const dimensionalInspectionData = [
+        ["USB Depth (9mm ± 0.2mm)", getRadioValues("enclosure_damage14")],
+        ["USB Connector Diameter (16.00 ± 0.05mm)", getRadioValues("enclosure_damage15")]
+    ];
+
+    const iecTestingData = [
+        ["Patient Leakage Current Testing (WI-1064)", getRadioValues("enclosure_damage16")],
+        ["Hi-pot Testing (WI-1064)", getRadioValues("enclosure_damage17")]
+    ];
+
+    // Function to add a table to the PDF
+    function addTable(title, data, y) {
+        // Check if we need to add a new page
+        if (y + 30 > doc.internal.pageSize.height) {
+            doc.addPage();
+            y = 30; // Start a bit lower on the new page
+        }
+        
+        doc.setFontSize(12);
+        doc.setFont("helvetica", "bold");
+        doc.setTextColor(0, 102, 204);
+        doc.text(title, 14, y);
+        doc.autoTable({
+            startY: y + 5,
+            head: [["Inspection Item", "Result"]],
+            body: data,
+            theme: 'striped',
+            headStyles: { fillColor: [0, 102, 204], textColor: 255 },
+            alternateRowStyles: { fillColor: [240, 240, 240] },
+            margin: { top: 5, left: 14, right: 14 },
+            columnStyles: { 0: { cellWidth: 'auto' }, 1: { cellWidth: 30 } }
+        });
+        return doc.lastAutoTable.finalY;
+    }
+
+    // Add tables to the PDF
+    let yPos = 85;
+    yPos = addTable("Visual Inspection", visualInspectionData, yPos) + 10;
+    yPos = addTable("Functional Inspection", functionalInspectionData, yPos) + 10;
+
+    // Force "Dimensional Inspection" to start on a new page
+    doc.addPage();
+    yPos = 30; // Start lower on the new page
+    yPos = addTable("Dimensional Inspection", dimensionalInspectionData, yPos) + 10;
+    yPos = addTable("IEC Testing Inspection", iecTestingData, yPos);
+
+    // Add footer
+    const pageCount = doc.internal.getNumberOfPages();
+    for (let i = 1; i <= pageCount; i++) {
+        doc.setPage(i);
+        doc.setFontSize(8);
+        doc.setTextColor(100);
+        doc.text(`Page ${i} of ${pageCount}`, doc.internal.pageSize.width / 2, doc.internal.pageSize.height - 10, null, null, "center");
+    }
+
+    // Save the PDF
+    doc.save("VL_Inspection_Report.pdf");
+});
+</script>
+
+</body>
+</html>
